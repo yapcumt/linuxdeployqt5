@@ -186,34 +186,32 @@ int main(int argc, char **argv)
             return 1;
         }
     }
-/*    
+    /*
     // We need to catch those errors at the source of the problem
     // https://github.com/AppImage/appimage.github.io/search?q=GLIBC&unscoped_q=GLIBC&type=Issues
     const char *glcv = gnu_get_libc_version ();
     if(skipGlibcCheck) {
-        if(! bundleEverything) {
-            qInfo() << "WARNING: Not checking glibc on the host system.";
-            qInfo() << "         The resulting AppDir or AppImage may not run on older systems.";
-            qInfo() << "         This mode is unsupported and discouraged.";
-            qInfo() << "         For more information, please see";
-            qInfo() << "         https://github.com/probonopd/linuxdeployqt/issues/340";
-        }
+        qInfo() << "WARNING: Not checking glibc on the host system.";
+        qInfo() << "         The resulting AppDir or AppImage may not run on older systems.";
+        qInfo() << "         This mode is unsupported and discouraged.";
+        qInfo() << "         For more information, please see";
+        qInfo() << "         https://github.com/probonopd/linuxdeployqt/issues/340";
      } else {
         // openSUSE Leap 15.0 uses glibc 2.26 and is used on OBS
-        // Ubuntu Xenial Xerus (16.04) uses glibc 2.23
-        // Ubuntu Bionic Beaver (18.04) uses glibc 2.27
-        // Ubuntu Focal Fossa (20.04) uses glibc 2.31
-        if (strverscmp (glcv, "2.32") >= 0) {
+        // Ubuntu Xenial (16.04) uses glibc 2.23
+        // Ubuntu Bionic (18.04) uses glibc 2.27
+        if (strverscmp (glcv, "2.28") >= 0) {
             qInfo() << "ERROR: The host system is too new.";
             qInfo() << "Please run on a system with a glibc version no newer than what comes with the oldest";
-            qInfo() << "currently supported mainstream distribution (Ubuntu Focal Fossa), which is glibc 2.31.";
+            qInfo() << "currently still-supported mainstream distribution (Ubuntu Bionic), which is glibc 2.27.";
             qInfo() << "This is so that the resulting bundle will work on most still-supported Linux distributions.";
             qInfo() << "For more information, please see";
             qInfo() << "https://github.com/probonopd/linuxdeployqt/issues/340";
             return 1;
         }
     }
-*/
+	*/
+
     if (argc < 2 || (firstArgument.startsWith("-"))) {
         qInfo() << "";
         qInfo() << "Usage: linuxdeployqt <app-binary|desktop file> [options]";

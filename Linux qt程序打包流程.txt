@@ -1,0 +1,46 @@
+设置VirtualBox分辨率显示不全的问题
+1.Ctrl+Alt+t打开终端面板
+2.输入xrandr然后回车，查看支持的所有分辨率
+  xrandr -s 1920x1080
+  
+先设置root用户登录密码，并切换到root
+1. 进入terminal
+2. 输入sudo  passwd root   并设置密码，提示要你输入两次密码，自己设定密码
+3. 输入 su root， 要求你输入密码
+
+Qt5.12.12在ubuntu20.04下的安装教程
+https://zhuanlan.zhihu.com/p/608318975
+
+Linux下Qt安装完成后qtcreator无法打开问题
+https://blog.csdn.net/weixin_43508491/article/details/118104583
+sudo apt-get install libxcb-xinerama0
+
+//参考视频连接：https://www.bilibili.com/video/BV1aK4y1v7fq/?spm_id_from=333.999.0.0&vd_source=0e12beac326cf6a0ae42c3130db28173
+//博客参考：https://www.bilibili.com/read/cv19276404/?from=search&spm_id_from=333.337.0.0
+1.安装patchelf和cmake，修改qt环境变量
+sudo apt install cmake
+sudo apt install patchelf
+sudo apt-get install cmake-gui 
+使用命令vi ~/.bashrc，增加下列内容，然后注销，重新登录。注意下面的路径是Qt安装的路径
+配置环境变量：https://zhuanlan.zhihu.com/p/317282094#Linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9AVim%20~/.bashrc
+提升用户权限后，在下面地址中更改
+chmod -v u+w /etc/environment
+
+#add Qt
+#add Qt ENV
+export QT_QIR=/home/yap/Qt5.12.12/5.12.12/gcc_64
+export PATH=/home/yap/Qt5.12.12/5.12.12/gcc_64/bin:$PATH
+export LD_LIBRARY_PATH =/home/yap/Qt5.12.12/5.12.12/gcc_64/lib:&LD_LIBRARY_PATH
+export QT_PLUGIN_PATH =/home/yap/Qt5.12.12/5.12.12/gcc_64/plugins:$QT_PLUGIN_PATH
+export QML2_IMPORT_PATH=/home/yap/Qt5.12.12/5.12.12/gcc_64/qml:$QML2_IMPORT_PATH
+
+2.git clone linuxdeployqt
+git clone https://github.com/yapcumt/linuxdeployqt5.git --depth=1
+3.进入linuxdeployqt目录，修改tools/linuxdeployqt/main.cpp源码。
+4.进入linuxdeployqt目录，使用cmake命令，cmake CMakeList.txt。
+5.使用make命令，在tools/linuxdeployqt目录生成一个可执行文件，linuxdeployqt。
+6.移动到usr/local/bin方便使用。
+7.在qt creator中，选择release编译，将编译好的二进制文件，单独列出来，放到一个目录中。在该目录打开，使用linuxdeployqt hello -appimage 等待编译完成。
+
+提升文件夹所有文件的读写权限
+chmod -R 777  work（文件夹名称）
