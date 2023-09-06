@@ -21,6 +21,13 @@ sudo apt-get install libxcb-xinerama0
 sudo apt install cmake
 sudo apt install patchelf
 sudo apt-get install cmake-gui 
+
+使用cmake-gui编译完成后，切入build目录，并且使用make命令即可：
+make 
+然后 make install这个，手动移动到/usr/local/bin
+
+sudo mv linuxdeployqt /usr/local/bin/
+
 使用命令vi ~/.bashrc，增加下列内容，然后注销，重新登录。注意下面的路径是Qt安装的路径
 配置环境变量：https://zhuanlan.zhihu.com/p/317282094#Linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9AVim%20~/.bashrc
 提升用户权限后，在下面地址中更改
